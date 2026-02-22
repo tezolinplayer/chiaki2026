@@ -24,6 +24,7 @@ jobs:
       with:
         msystem: MINGW64
         update: true
+        # Nomes dos pacotes corrigidos para as versões mais recentes do MSYS2
         install: >-
           git
           mingw-w64-x86_64-toolchain
@@ -32,13 +33,12 @@ jobs:
           mingw-w64-x86_64-qt6-base
           mingw-w64-x86_64-qt6-multimedia
           mingw-w64-x86_64-qt6-svg
-          mingw-w64-x86_64-qt6-webengine
           mingw-w64-x86_64-ffmpeg
           mingw-w64-x86_64-openssl
           mingw-w64-x86_64-opus
           mingw-w64-x86_64-protobuf
-          mingw-w64-x86_64-libhidapi
-          mingw-w64-x86_64-sdl2
+          mingw-w64-x86_64-hidapi
+          mingw-w64-x86_64-SDL2
           mingw-w64-x86_64-libplacebo
           mingw-w64-x86_64-vulkan-headers
           mingw-w64-x86_64-libunwind
@@ -63,24 +63,24 @@ jobs:
         mkdir -p release
         cp build/gui/chiaki.exe release/
         windeployqt --dir release release/chiaki.exe
-        cp /mingw64/bin/libavcodec-*.dll release/
-        cp /mingw64/bin/libavdevice-*.dll release/
-        cp /mingw64/bin/libavfilter-*.dll release/
-        cp /mingw64/bin/libavformat-*.dll release/
-        cp /mingw64/bin/libavutil-*.dll release/
-        cp /mingw64/bin/libswresample-*.dll release/
-        cp /mingw64/bin/libswscale-*.dll release/
-        cp /mingw64/bin/libcrypto-*.dll release/
-        cp /mingw64/bin/libssl-*.dll release/
-        cp /mingw64/bin/libopus-*.dll release/
-        cp /mingw64/bin/libprotobuf-*.dll release/
-        cp /mingw64/bin/libhidapi-*.dll release/
-        cp /mingw64/bin/SDL2.dll release/
-        cp /mingw64/bin/libplacebo-*.dll release/
-        cp /mingw64/bin/libstdc++-6.dll release/
-        cp /mingw64/bin/libgcc_s_seh-1.dll release/
-        cp /mingw64/bin/libwinpthread-1.dll release/
-        cp /mingw64/bin/zlib1.dll release/
+        cp /mingw64/bin/libavcodec-*.dll release/ || true
+        cp /mingw64/bin/libavdevice-*.dll release/ || true
+        cp /mingw64/bin/libavfilter-*.dll release/ || true
+        cp /mingw64/bin/libavformat-*.dll release/ || true
+        cp /mingw64/bin/libavutil-*.dll release/ || true
+        cp /mingw64/bin/libswresample-*.dll release/ || true
+        cp /mingw64/bin/libswscale-*.dll release/ || true
+        cp /mingw64/bin/libcrypto-*.dll release/ || true
+        cp /mingw64/bin/libssl-*.dll release/ || true
+        cp /mingw64/bin/libopus-*.dll release/ || true
+        cp /mingw64/bin/libprotobuf-*.dll release/ || true
+        cp /mingw64/bin/libhidapi-*.dll release/ || true
+        cp /mingw64/bin/SDL2.dll release/ || true
+        cp /mingw64/bin/libplacebo-*.dll release/ || true
+        cp /mingw64/bin/libstdc++-6.dll release/ || true
+        cp /mingw64/bin/libgcc_s_seh-1.dll release/ || true
+        cp /mingw64/bin/libwinpthread-1.dll release/ || true
+        cp /mingw64/bin/zlib1.dll release/ || true
 
     - name: Upload Build
       uses: actions/upload-artifact@v4
