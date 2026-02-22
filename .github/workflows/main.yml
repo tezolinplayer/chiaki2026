@@ -24,7 +24,6 @@ jobs:
       with:
         msystem: MINGW64
         update: true
-        # Nomes dos pacotes corrigidos para as versões mais recentes do MSYS2
         install: >-
           git
           mingw-w64-x86_64-toolchain
@@ -53,7 +52,8 @@ jobs:
       run: |
         cmake -S . -B build -G "Ninja" \
           -DCMAKE_BUILD_TYPE=Release \
-          -DCHIAKI_ENABLE_CLI=OFF
+          -DCHIAKI_ENABLE_CLI=OFF \
+          -DCMAKE_POLICY_VERSION_MINIMUM=3.5
 
     - name: Build
       run: cmake --build build
