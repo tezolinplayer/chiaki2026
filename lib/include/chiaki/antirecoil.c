@@ -2,6 +2,7 @@
 
 #include <chiaki/antirecoil.h>
 #include <chiaki/time.h>
+#include <chiaki/controller.h> // <--- ESSA É A LINHA QUE FALTAVA (Corrige o erro do R2)
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
@@ -11,12 +12,12 @@ static struct {
     AntiRecoilConfig config;
     bool is_firing;
     uint64_t fire_start_time;
-    float current_y_accum;
 } g_recoil = {0};
 
 void chiaki_antirecoil_init(void) {
     g_recoil.config.enabled = false;
     g_recoil.config.vertical_strength = 0;
+    // Agora o compilador sabe o que é esta constante graças ao controller.h
     g_recoil.config.fire_button = CHIAKI_CONTROLLER_BUTTON_R2;
     g_recoil.is_firing = false;
 }
