@@ -29,9 +29,11 @@ jobs:
           mingw-w64-x86_64-toolchain
           mingw-w64-x86_64-cmake
           mingw-w64-x86_64-ninja
-          mingw-w64-x86_64-qt6-base
-          mingw-w64-x86_64-qt6-multimedia
-          mingw-w64-x86_64-qt6-svg
+          mingw-w64-x86_64-qt5-base
+          mingw-w64-x86_64-qt5-multimedia
+          mingw-w64-x86_64-qt5-svg
+          mingw-w64-x86_64-json-c
+          mingw-w64-x86_64-miniupnpc
           mingw-w64-x86_64-ffmpeg
           mingw-w64-x86_64-openssl
           mingw-w64-x86_64-opus
@@ -76,6 +78,8 @@ jobs:
         cp /mingw64/bin/libprotobuf-*.dll release/ || true
         cp /mingw64/bin/libhidapi-*.dll release/ || true
         cp /mingw64/bin/SDL2.dll release/ || true
+        cp /mingw64/bin/libjson-c-*.dll release/ || true
+        cp /mingw64/bin/libminiupnpc*.dll release/ || true
         cp /mingw64/bin/libplacebo-*.dll release/ || true
         cp /mingw64/bin/libstdc++-6.dll release/ || true
         cp /mingw64/bin/libgcc_s_seh-1.dll release/ || true
